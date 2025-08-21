@@ -9,7 +9,9 @@ body {
 
 /* Header */
 header {
-  background: #E6B89C;
+  position: relative;
+  background: #E6B89C; /* matches your header highlight color */
+  min-height: 100px; /* ensures enough space for the teddy */
   padding: 2rem 0 1rem 0;
   text-align: center;
   box-shadow: 0 2px 8px rgba(44,44,44,0.04);
@@ -43,7 +45,7 @@ nav a:hover {
   color: #fff;
 }
 
-/* Container */
+/* Diary/Notebook style for the main container */
 .container {
   background: #fff;
   max-width: 600px;
@@ -98,11 +100,12 @@ button, .btn {
   padding: 0.6rem 1.2rem;
   font-size: 1rem;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.2s, transform 0.18s;
 }
 
 button:hover, .btn:hover {
   background: #6D4C41;
+  transform: scale(1.08) translateY(-2px);
 }
 
 /* Posts Grid */
@@ -159,3 +162,67 @@ button:hover, .btn:hover {
   margin: 0;
   font-size: 1rem;
 }
+
+/* Hearts Animation */
+#hearts-container {
+  position: fixed;
+  pointer-events: none;
+  left: 0; top: 0; width: 100vw; height: 100vh;
+  z-index: 9999;
+}
+.heart {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  background: url('data:image/svg+xml;utf8,<svg fill="pink" viewBox="0 0 32 29.6" xmlns="http://www.w3.org/2000/svg"><path d="M23.6,0c-2.7,0-5.1,1.3-6.6,3.3C15.5,1.3,13.1,0,10.4,0C4.7,0,0,4.7,0,10.4c0,6.6,7.1,12.2,17.1,19.1 c0.6,0.4,1.4,0.4,2,0C24.9,22.6,32,17,32,10.4C32,4.7,27.3,0,23.6,0z"/></svg>') no-repeat center/contain;
+  opacity: 0.8;
+  animation: floatHeart 2.8s linear forwards;
+}
+@keyframes floatHeart {
+  0% {
+    transform: scale(0.7) translateY(0);
+    opacity: 0.8;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.1) translateY(-180px);
+    opacity: 0;
+  }
+}
+
+/* Floating Teddy Animation */
+.floating-teddy {
+  position: absolute;
+  top: 10px;
+  left: 32px;
+  right: auto;
+  z-index: 10;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  background: #E6B89C;
+  border-radius: 50%; /* Make it a perfect circle */
+  box-shadow: 0 4px 16px rgba(230,184,156,0.18);
+  animation: teddy-float 2.8s ease-in-out infinite;
+}
+
+.floating-teddy img {
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+  background: transparent; /* No background, let the circle show */
+  border-radius: 50%;
+  box-shadow: none;
+  padding: 0;
+}
+
+@keyframes teddy-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
