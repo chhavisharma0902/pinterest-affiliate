@@ -136,10 +136,11 @@ button:hover, .btn:hover {
 
 /* Posts Grid */
 .posts-grid {
-  display: grid;
+  display: flex;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 5 px;
   margin-top: 1.5rem;
+  width: 400px;
 }
 
 @media (min-width: 600px) {
